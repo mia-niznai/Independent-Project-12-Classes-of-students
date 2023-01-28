@@ -88,5 +88,20 @@ loadBButton.addEventListener("click", () =>{
   });
 });
 
+//Task 2
 
+const averageButton = document.querySelector("#average");
+
+averageButton.addEventListener("click", ()=> {
+  prompter.innerText = "";
+  let total = 0;
+  let count = 0;
+  let classToCheck = textArea.value.split("\n");
+  classToCheck.pop();
+  classToCheck.forEach(student =>{
+    textArea.value += `${student.name} - ${student.grade}\n`;
+  });
+});
+  
+  
 
