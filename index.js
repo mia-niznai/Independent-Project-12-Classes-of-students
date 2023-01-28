@@ -102,6 +102,25 @@ averageButton.addEventListener("click", ()=> {
     textArea.value += `${student.name} - ${student.grade}\n`;
   });
 });
+
+//Task 3
+
+const failingButton = document.querySelector("#failing");
+
+failingButton.addEventListener("click", ()=> {
+  prompter.innerText = "";
+  let classToCheck = textArea.value.split("\n");
+  classToCheck.pop();
+  let failingStudents = [];
+  classToCheck.forEach(student => {
+    let studentArr = student.split("-");
+    if (parseInt(studentArr[1] < 5) {
+        failingStudents.push(studentArr[0];
+  }
+  });
+  prompter.innerText = "|" + failingStudents.join("|") + "|";
+});
+ 
   
   
 
