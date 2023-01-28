@@ -65,5 +65,28 @@ const studentsClassB = [
   }
 ];
 
+//Task 1
+
+const textArea = document.querySelector("textarea");
+const prompter = document.querySelector(".prompter");
+const loadAButton = document.querySelector("#loadA");
+const loadBButton = document.querySelector("#loadB");
+
+loadAButton.addEventListener("click", () =>{
+prompter.innerText = "";
+textArea.value = "";
+studentsClassA.forEach(student =>{
+  textArea.value += `${student.name} - ${student.grade}\n`;
+});
+});
+
+loadBButton.addEventListener("click", () =>{
+  prompter.innerText = "";
+  textArea.value = "";
+  studentsClassB.forEach(student =>{
+    textArea.value += `${student.name} - ${student.grade}\n`;
+  });
+});
+
 
 
