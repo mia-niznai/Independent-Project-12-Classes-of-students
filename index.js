@@ -67,39 +67,46 @@ const studentsClassB = [
 
 //Task 1
 
-const textArea = document.querySelector("textarea");
-const prompter = document.querySelector(".prompter");
-const loadAButton = document.querySelector("#loadA");
-const loadBButton = document.querySelector("#loadB");
+const loadABttn=document.getElementById("loadA");
+const loadBBttn=document.getElementById("loadB");
+const textarea=document.querySelector("textarea");
+const prompter=document.querySelector(".prompter");
+const averageBttn=document.getElementById("average");
 
-loadAButton.addEventListener("click", () =>{
-prompter.innerText = "";
-textArea.value = "";
-studentsClassA.forEach(student =>{
-  textArea.value += `${student.name} - ${student.grade}\n`;
-});
-});
+  let sum1=0;
+  for(let i=0; i<studentsClassA.length; i++){
+    sum1+=studentsClassA[i].grade;
+  }
+  let averageClassA=sum1/studentsClassA.length;
+  
+  let sum2=0;
+  for(let i=0; i<studentsClassB.length; i++){
+    sum2+=studentsClassB[i].grade;
+  }
+  let averageClassB=sum2/studentsClassB.length;
 
-loadBButton.addEventListener("click", () =>{
-  prompter.innerText = "";
-  textArea.value = "";
-  studentsClassB.forEach(student =>{
-    textArea.value += `${student.name} - ${student.grade}\n`;
+//task1 + task2
+
+loadABttn.addEventListener("click", () => {
+  prompter.innerText="";
+  textarea.value="";
+  studentsClassA.forEach(student => {
+    textarea.value += `${student.name} - ${student.grade}\n`;
+    });
+  console.log(textarea.value);
+  averageBttn.addEventListener("click", () => {
+  prompter.innerText=Math.floor(averageClassA);
   });
 });
 
-//Task 2
-
-const averageButton = document.querySelector("#average");
-
-averageButton.addEventListener("click", ()=> {
-  prompter.innerText = "";
-  let total = 0;
-  let count = 0;
-  let classToCheck = textArea.value.split("\n");
-  classToCheck.pop();
-  classToCheck.forEach(student =>{
-    textArea.value += `${student.name} - ${student.grade}\n`;
+loadBBttn.addEventListener("click", () => {
+  prompter.innerText="";
+  textarea.value="";
+  studentsClassB.forEach(student => {
+    textarea.value += `${student.name} - ${student.grade}\n`;
+  });
+    averageBttn.addEventListener("click", () => {
+    prompter.innerText=Math.floor(averageClassB);
   });
 });
 
