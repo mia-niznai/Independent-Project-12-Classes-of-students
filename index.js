@@ -65,13 +65,15 @@ const studentsClassB = [
   }
 ];
 
-//Task 1
+//
 
 const loadABttn=document.getElementById("loadA");
 const loadBBttn=document.getElementById("loadB");
 const textarea=document.querySelector("textarea");
 const prompter=document.querySelector(".prompter");
 const averageBttn=document.getElementById("average");
+const failBttn=document.getElementById("failing");
+
 
   let sum1=0;
   for(let i=0; i<studentsClassA.length; i++){
@@ -85,7 +87,17 @@ const averageBttn=document.getElementById("average");
   }
   let averageClassB=sum2/studentsClassB.length;
 
-//task1 + task2
+const failedStudents = (classArray) => {
+  let array=[];
+  classArray.forEach(student => {
+    if(student.grade<5){
+      array.push(student.name);
+     }
+  })
+  return prompter.innerText = "|" + array.join("|") + "|";
+ }
+
+//task1
 
 loadABttn.addEventListener("click", () => {
   prompter.innerText="";
@@ -95,9 +107,14 @@ loadABttn.addEventListener("click", () => {
     });
   console.log(textarea.value);
   averageBttn.addEventListener("click", () => {
-  prompter.innerText=Math.floor(averageClassA);
-  });
-});
+    prompter.innerText=Math.floor(averageClassA);
+    });
+  failBttn.addEventListener("click", () => {
+    prompter.innerText="";
+    failedStudents(studentsClassA);
+    })
+  })
+
 
 loadBBttn.addEventListener("click", () => {
   prompter.innerText="";
@@ -108,26 +125,11 @@ loadBBttn.addEventListener("click", () => {
     averageBttn.addEventListener("click", () => {
     prompter.innerText=Math.floor(averageClassB);
   });
-});
-
-//Task 3
-
-const failingButton = document.querySelector("#failing");
-
-failingButton.addEventListener("click", ()=> {
-  prompter.innerText = "";
-  let classToCheck = textArea.value.split("\n");
-  classToCheck.pop();
-  let failingStudents = [];
-  classToCheck.forEach(student => {
-    let studentArr = student.split("-");
-    if (parseInt(studentArr[1] < 5) {
-        failingStudents.push(studentArr[0];
-  }
-  });
-  prompter.innerText = "|" + failingStudents.join("|") + "|";
-});
- 
+  failBttn.addEventListener("click", () => {
+  prompter.innerText="";
+    failedStudents(studentsClassB);
+    })
+  })
   
   
 
